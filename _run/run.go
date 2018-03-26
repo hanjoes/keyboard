@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	kb := keyboard.NewKeyboard(true)
+	kb := keyboard.NewKeyboard(false)
 	go func() {
 		kb.Start()
 		defer kb.Shutdown()
@@ -16,7 +16,7 @@ func main() {
 	for {
 		select {
 		case input := <-kb.In:
-			fmt.Printf("got input: %q\n", input.Content)
+			fmt.Printf("keyboard input: %q\n", input)
 			break
 		}
 	}
